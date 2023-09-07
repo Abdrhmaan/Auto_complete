@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+
+    <div class="search-box">
+        <div class="row">
+            <input type="text" placeholder="search" autocomplete="off" id="inpot-box"> 
+            <button><img src="/search.png"></button>
+        </div>
+        <div class="result">
+           
+
+        </div>
+
+    </div>
+    
+    <script>
+
+
+let qraaal  =[
+    "magca",
+    "wll",
+    "xagee",
+    "aadaysa",
+    "wllo",
+    "ma hubtaa",
+    "waa lu jeclhay",
+    "wllo",
+    "ma hubtaa",
+
+]
+let inpotbox = document.getElementById("inpot-box")
+console.log(inpotbox)
+let resultbox = document.querySelector(".result")
+
+inpotbox.onkeyup = function(){
+  
+let resutle = []
+
+
+ let input = inpotbox.value;
+ 
+ console.log(input)
+
+ if(input.length){
+
+    resutle = qraaal.filter((keywor) => {
+       return   keywor.toLocaleLowerCase().includes(input.toLocaleLowerCase())
+    })
+   // console.log(resutle)
+   displyresult(resutle)
+   if(resutle.length){
+    resutle.innerHTML = ""
+   }
+ 
+ }
+
+
+
+}
+
+
+
+
+
+  function displyresult(resutle){
+
+    let contente = resutle.map((list) => {
+
+        return   "<li onclick=selectbtn(this)>" + list+ "</li>"
+
+
+      //  console.log(list)
+    })
+    resultbox.innerHTML = "<ul>" +contente.join("") + "</ul>"
+
+
+
+  }
+
+
+
+
+
+  function selectbtn(list){
+        inpotbox.value = list.innerHTML,
+        resutle.value = ''
+
+
+       }
+
+
+
+
+
+
+
+
+
+
+        /*
+        // kan waxaa soo bandhigi lahayd 
+        let aviableyeyword = [
+            'wher',
+            'html',
+            'i laearn coding',
+            'yell',
+            'how are you',
+            'ma faydaa wllo'
+
+        ]
+
+        // kani waa inpot
+        let inpotbox = document.getElementById("inpot-box")
+      //  console.log(inpotbox)
+      // kana waa meehs aku so bandhigi lahayd
+         let result = document.querySelector(".result")
+       //  console.log(result)
+
+       
+       inpotbox.onkeyup = function(){
+        let results = []
+
+      //  alert("hh")
+      // kani input value ama qiimah ku jira 
+       let input =  inpotbox.value;
+    //   console.log(input)
+       if(input.length){
+        results = aviableyeyword.filter((keyword) => {
+         return    keyword.toLocaleLowerCase().includes(input.toLocaleLowerCase())
+        } )
+        console.log(results)
+        
+       }
+       disply(results)
+       if(!results.length){
+        result.innerHTML = ""
+       }
+       }
+
+      
+       function disply(results) {
+
+      const conrtnt =  results.map((list) => {
+
+           return  "<li  onclick=selectbtn(this)>" + list + "</li>"
+
+        })
+      
+        result.innerHTML = "<ul>" + conrtnt.join("") + "</ul>"
+        
+       }
+
+
+       function selectbtn(list){
+        inpotbox.value = list.innerHTML
+        result.innerHTML = ''
+
+
+       }
+       */
+
+
+
+
+    </script>
+</body>
+</html>
